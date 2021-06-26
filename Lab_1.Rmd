@@ -1,0 +1,84 @@
+Laboratorio 1
+
+```{r}
+#1. Vectores y matrices
+
+# 1.1 crear vector por cada estudiante
+student_1 <-c(50.4, 62.3, 92.1, 77.6, TRUE)
+student_2 <-c(41.7, 87.9, 75.3, 72.4, FALSE) 
+student_3 <-c(30.3,67.8,69.3, 71.2, FALSE)
+student_4 <-c(65.4,85.1, 92.3, 96.8, TRUE)
+student_5 <-c(70.4,88.2, 95.2, 90.7, TRUE)
+
+#1.2 vector students vector
+
+students_vector <- c(student_1,student_2,student_3,student_4,student_5)
+
+#1.3 matriz que reciba como parametro el vector
+
+students_matrix <- matrix(students_vector, nrow=5, byrow=TRUE)
+students_matrix
+
+```
+2. Nombrado de una matriz
+
+```{r}
+#2. Nombrado de matriz
+#2.1. Crear vectores nombres de filas y columnas
+
+name_students <- c("Lily Brown","Davis Moore","Susan Taylor","Mike Jones","Tom Hill")
+name_courses_legal_age <- c("TIC","Accounting","Psychology","Ethics","Legal_age")
+
+
+#2.2. crear nombrado de filas y columnas de la matriz
+colnames(students_matrix) <- name_courses_legal_age
+rownames(students_matrix) <- name_students
+
+students_matrix
+
+```
+
+```{r}
+# 3. rowSums, cbind
+#3.1. Crear vector total_grade_student, qeu contenga sumatoria de las notas
+
+total_grade_student <- rowSums(students_matrix[,1:4])
+total_grade_student
+
+
+#3.2. Pegar el vector total_grade_student con la matriz students_matrix con cbindy asignar el resultado a una nueva matriz  result_students 
+
+result_students <- cbind(students_matrix, total_grade_student)
+result_students
+
+```
+
+```{r}
+
+#4. Seleccionando elementos de una matriz
+
+#4.1. De matriz result_students seleccionar y almacenar resultado en una variable de nombre selected_elements e imprimir el resultado
+
+selected_elements <- students_matrix[1:5,2:5]
+
+selected_elements
+
+```
+```{r}
+#5. Data frame
+# 5.1. Construir data frame
+
+students_grades_df <- data.frame(selected_elements)
+
+students_grades_df
+
+#5.2. Funcion subset
+
+subset(students_grades_df, subset(Accounting > 80 & Legal_age == TRUE))
+
+
+
+```
+
+
+
